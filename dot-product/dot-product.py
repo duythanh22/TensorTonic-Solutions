@@ -7,5 +7,9 @@ def dot_product(x, y):
     """
     x = np.asarray(x)
     y = np.asarray(y)
+    if x.ndim != y.ndim:
+        raise ValueError("Both inputs must be 1D")
 
-    return np.dot(x, y)
+    if x.shape[0] != y.shape[0]:
+        raise ValueError("Inputs must have the same length")
+    return float(np.dot(x, y))
