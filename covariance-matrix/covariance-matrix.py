@@ -6,17 +6,14 @@ def covariance_matrix(X):
     """
     matrix = np.asarray(X)
 
-    if matrix.ndim != 2:
+    if matrix.ndim !=2:
         return None
 
-    m, n = matrix.shape
-    if m < 2:
+    N, D = matrix.shape
+
+    if N < 2:
         return None
 
-    mean_matrix  = np.mean(matrix, axis=0)
-    matrix_center = matrix - mean_matrix
-
-    cov_matrix = matrix_center.T @ matrix_center
-    cov_matrix = cov_matrix / (m-1)
-    return cov_matrix
-    pass
+    mean_matrix = np.mean(matrix, axis=0)
+    center_matrix = matrix - mean_matrix
+    return (center_matrix.T @ center_matrix) / (N-1)
